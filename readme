@@ -1,0 +1,49 @@
+Expression du besoin :
+
+Une section avec des calculs devra faire apparaître :
+● Nombre de jours / heures travaillés dans le mois
+● Nombre de jours d'absences dans le mois
+● Nombre de dimanche / heures dimanche travaillés dans le mois
+● Nombre de fériés / heures fériées travaillées dans le mois
+
+L'algorithme de calcul de la section des totaux doit prendre en compte les règles de gestion
+suivantes :
+● Un jour férié est considéré comme travaillé si le nombre d'heures dépasse 4 sinon les
+heures travaillées sur la journée sont considérées comme du temps de travail
+ordinaire.
+● Un dimanche est considéré comme travaillé si le nombre d'heures dépasse 3 sinon
+les heures travaillées sur la journée sont considérées comme du temps de travail
+ordinaire.
+● En cas de dimanche férié, les heures de fériés sont prioritaires sur les heures de
+dimanche
+
+
+Enoncé:
+
+Réalisez l'algorithme de calcul de la section des totaux appelé après modification d’une des
+cellules.
+On considère en entrée de la fonction un tableau des 31 jours du mois de mai avec pour
+chaque jour, les éléments suivants :
+● date
+● durée éventuellement
+⇾ La fonction doit retourner un tableau avec les totaux attendus.
+
+
+Durée de réalisation : 3 heures
+
+
+Améliorations possibles :
+
+● Pas de borne basse sur les heures travaillées : un nombre négatif ne serait pas corrigé en 0.
+=> max(0, min($workedHours, 8))
+
+● Règle des 8h appliquée silencieusement : si une saisie dépasse 8h, elle est tronquée sans alerte — côté métier, il faudrait peut-être signaler l’erreur.
+=> Lever une exception ou retourner une erreur si l’entrée dépasse 8h.
+
+● Pas de gestion d’horaires fractionnaires : uniquement int, donc impossible de saisir 7.5h ou 4.25h par exemple.
+=> Accepter les décimales pour workedHours (passer en float) si l’activité l’exige.
+
+● Couplage fort avec PublicHolidays
+=> Rendre PublicHolidays optionnel pour pouvoir utiliser la classe ScheduleComputer en dehors du contexte jours fériés.
+
+● Utiliser une librairie pour calculer les jours fériés.
